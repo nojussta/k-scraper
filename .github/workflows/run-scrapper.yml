@@ -1,0 +1,25 @@
+name: Run scraper
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, reopened, synchronize]
+  workflow_dispatch:
+  
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Python dependencies
+        uses: py-actions/py-dependency-install@v4
+        with:
+          path: requirements.txt
+
+      - name: Run final-scraper.py
+        run: |
+          python final-scraper.py
+          cat scraped_data.json
