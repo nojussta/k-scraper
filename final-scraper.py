@@ -42,7 +42,7 @@ if response.status_code == 200:
             scraped_data = unique_data
 
     json_output = json.dumps(scraped_data, ensure_ascii=False, indent=4)
-    with open('scraped_data.json', 'w', encoding='utf-8') as f:
+    with open('scraped_data_new.json', 'w', encoding='utf-8') as f:
         json.dump(scraped_data, f, ensure_ascii=False, indent=4)
 else:
     print(f"Failed to retrieve the page. Status code: {response.status_code}")
